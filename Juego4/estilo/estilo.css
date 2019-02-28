@@ -1,0 +1,126 @@
+body {
+	background-color: #000000;
+	background:#000000 url('../imagenes/menu.png') no-repeat ;
+	text-align: center;
+}
+h1{
+	color: #FFFFFF;
+	font-size: 100px;
+}
+section{
+	text-align: center;
+}
+button {
+	text-decoration: none;
+    padding: 5px;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 200px;
+	width:250px;
+    height:90px;
+    color: #000000;
+    opacity: 0.4;
+    outline: none;
+}
+.overlay{
+	background: rgba(0,0,0,.4);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	visibility: hidden; 
+}
+.overlay.active{
+	visibility: visible;
+}
+.popup{
+	background: #f8f8f8;
+	box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.9);
+	border-radius: 3px;
+	padding: 20px;
+	text-align: center;
+	width: 300px; 
+
+	transition: .5s ease all;
+	transform: scale(0.7);
+	opacity: 0;
+}
+/*animacion*/
+.popup.active{
+	opacity: 1; transform: scale(1);
+}
+.popup.active h3{
+	animation: entradaTitulo .6s ease .3s forwards;
+}
+
+.popup.active h4{
+	animation: entradasubTitulo .6s ease .3s forwards;
+}
+@keyframes entradaTitulo{
+	from{
+		transform: translateY(-25px);
+		opacity: 0;
+	}to{
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+@keyframes entradasubTitulo{
+	from{
+		transform: translateY(25px);
+		opacity: 0;
+	}to{
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.popup .cerrar{
+	font-size: 16px;
+	line-height: 16px;
+	display: block;
+	text-align: right;
+	color: #FA5858;
+	transition: .3s ease all;
+}
+.popup .cerrar:hover{
+	color: #FF0000;
+}
+.popup h3{
+	font-size: 36px;
+	font-weight: 300;
+	margin-bottom: 20px;
+	opacity: 0;
+}
+.popup h4{
+	font-size: 20px;
+	font-weight: 300;
+	margin-bottom: 40px;
+	opacity: 0;
+}
+
+.Juego{
+	background: url('../imagenes/jugar.png') no-repeat center;
+	
+}
+.Juego:hover{
+	opacity: 1;
+}
+.puntaje{
+	background: url('../imagenes/score.png') no-repeat center;
+	
+}
+.puntaje:hover{
+	opacity: 1;
+}
+.control{
+	background: url('../imagenes/intrucciones.png') no-repeat center;
+	
+}
+.control:hover{
+	opacity: 1;
+}
