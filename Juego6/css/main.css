@@ -1,0 +1,36 @@
+body {
+    background: url("../images/Galaxia.png") no-repeat left;
+	
+    font: 14px 'Arial',sans-serif;
+    text-align: center;
+}
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+a:hover {
+    color: #ffba00;
+}
+div.contenedor {
+    width: 100%;
+    margin: 0 auto;
+}
+div.izquierda, div.derecha {
+    width: 300px;
+}
+div.izquierda {
+    float: left;
+    text-align: left;
+}
+div.juego {
+
+}
+div.juego canvas {
+    background-color:#333322;
+	border:1px solid;
+	border-color:#ffffff;
+	border-radius:15px;
+	margin:2em;
+	padding:1em;
+	text-align: center;
+}
