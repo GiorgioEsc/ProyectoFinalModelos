@@ -4,6 +4,9 @@ $( document ).ready(function(){
   $(document).keydown(runHuman);
 });
 
+var envioDatos = true;
+const ID_JUEGO = 3;
+
 function start(){
 
   painter = new Painter($("#cv")[0]);
@@ -83,8 +86,14 @@ function end(){
   audios[0].pause();
   audios[0].currentTime = 0;
   alert("Perdiste " + player + "!\nTu puntaje fue " + (tiempo*100));
-  sendAJAX(url, {jugador:player,puntaje:(tiempo*100)})
+  if(envioDatos){
+    envioDatos = false;
+    if(player!=""){
+      sendAJAX(URL,toJson(tiempo*100, player, ID_JUEGO));
+    }
+  }
   if (confirm("Intentarlo de nuevo!")) {
+    envioDatos = true;
     zombies = [];
     stateGame = true;
     tiempo = 0;

@@ -1,0 +1,11 @@
+body{
+	background: #000000 url(../Imagenes/fondo.png) no-repeat center;
+	text-align: center;
+	color:#ffffff;
+}
+
+#pantalla{
+	border: 2px solid;
+	border-color; #ffffff;
+	background-color: #000000;
+}

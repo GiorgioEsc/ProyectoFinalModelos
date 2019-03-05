@@ -9,10 +9,12 @@ var nivel= {velocidad: 9, marcador: 0, muerto:false};
 var piedras= {x: ancho+100, y:suelo};
 var nube= {x:400, y: 100,velocidad:1};
 var nube2= {x:200, y: 100,velocidad:1};
+var envioDatos = true;
+
+const ID_JUEGO = 1;
 
 document.addEventListener("keydown",function(evento){
     if(evento.keyCode==32){
-        console.log("Salta");
         if (nivel.muerto==false){
             if(!kanguro.saltando){
             saltar();
@@ -28,7 +30,7 @@ document.addEventListener("keydown",function(evento){
             nube2.x= ancho+300;
             nivel.marcador=0;
             nivel.muerto=false;
-
+            envioDatos = true;
         }
     }
 });
@@ -162,11 +164,16 @@ function puntuacion(){
     }
 }
 
-
 //Bucle Principal 
 var FPS = 60;
 setInterval(function(){ //cada cuanto se debe ejecutar una funcion en un intervalo de tiempo.
     principal();
+    if(envioDatos && nivel.muerto==true){
+        envioDatos = false;
+        if(nombre!=""){
+            sendAJAX(URL,toJson(nivel.marcador, nombre, ID_JUEGO));
+        }
+    }
 }, 1000/FPS);
 
 

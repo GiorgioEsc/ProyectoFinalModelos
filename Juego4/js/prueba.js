@@ -1,8 +1,24 @@
+var nombre;
+
+var envioDatos = true;
+const ID_JUEGO = 4;
+
+function ingresarNombre(txt){
+    let aux = prompt(txt, "nombre");
+
+    if(aux == null || aux == ""){
+        ingresarNombre("nombre invalido, introduzca otro.")
+    }
+    else{
+        nombre = aux;
+    } 
+}
+
 function empezar() {
-	location.href="fondo.html";
+	location.href="fondo.php";
 }
 function salir(){
-	location.href="menu.html";
+	location.href="juego_travesia_espacial.php";
 }
 
 var x=280;
@@ -149,7 +165,12 @@ function cambioesc2(){
 }
 function cambio(event){
 	if (jugando==false) {
-
+		if(envioDatos){
+			envioDatos = false;
+			if(nombre!=""){
+				sendAJAX(URL,toJson(t, nombre, ID_JUEGO));
+			}
+		}
 	}else{
 		if(event.keyCode=='39'){//si la tecla presionada es direccional derecho
 			x=x+5;//mueve la nave 5 pixeles a la derecha

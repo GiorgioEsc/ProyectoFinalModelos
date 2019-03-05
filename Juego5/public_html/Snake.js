@@ -1,9 +1,26 @@
 //Variables globales
 var velocidad = 80;
 var tamano = 10;
+var nombre;
+
+var envioDatos = true;
+const ID_JUEGO = 5;
 
 /**
  */
+function ingresarNombre(txt){
+    let aux = prompt(txt, "nombre");
+
+    if(aux == null || aux == ""){
+        ingresarNombre("nombre invalido, introduzca otro.")
+    }
+    else{
+        nombre = aux;
+    } 
+}
+
+ingresarNombre("Ingrese su nombre");
+
 class Objeto {
     constructor() {
         this.tamano = tamano;
@@ -106,6 +123,7 @@ function control(event) {
     var cod = event.keyCode;
     if(cod == 13){
         jugando = true;
+        envioDatos = true;
     }
     if (ejex) {
         if (cod == 38) {
@@ -146,7 +164,12 @@ function findeJuego() {
     cabeza = new Cola(20, 20);
     comida = new Comida();
     //alert("Perdiste " + "Puntaje: " + gestor.getPuntaje());
-    
+    if(envioDatos){
+        envioDatos = false;
+        if(nombre!=""){
+            sendAJAX("../"+URL,toJson(gestor.getPuntaje(), nombre, ID_JUEGO));
+        }
+    }
     gestor.reiniciarPuntaje();
 }
 function choquepared() {

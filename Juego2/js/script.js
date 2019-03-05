@@ -2,6 +2,9 @@
 var jugando;
 var person;
 
+var envioDatos = true;
+const ID_JUEGO = 2;
+
 $(document).ready(inicio);
 $(document).keydown(capturaTeclado);
 
@@ -78,6 +81,12 @@ function run(){
 		setTimeout("run()",20);
 		
 	}else{
+		if(envioDatos){
+			envioDatos = false;
+			if(person!=""){
+				sendAJAX(URL,toJson(quica.puntos, person, ID_JUEGO));
+			}
+		}
 		contextoBuffer.clearRect(0,0,buffer.width,buffer.height);
 		contextoBuffer.fillStyle = "#ffffff";
 		quica.sprite = 3;

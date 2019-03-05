@@ -1,4 +1,19 @@
-﻿
+﻿var envioDatos = true;
+const ID_JUEGO = 6;
+
+function ingresarNombre(txt){
+    let aux = prompt(txt, "nombre");
+
+    if(aux == null || aux == ""){
+        ingresarNombre("nombre invalido, introduzca otro.")
+    }
+    else{
+        nombre = aux;
+    } 
+}
+
+ingresarNombre("Ingrese su nombre");
+
 // nos marca los pulsos del juego
 window.requestAnimFrame = (function () {
     return  window.requestAnimationFrame        ||
@@ -504,11 +519,23 @@ var game = (function () {
         drawBackground();
 //si congratualtions entonces muestre el mensaje
         if (congratulations) {
+            if(envioDatos){
+                envioDatos = false;
+                if(nombre!="" && player.score!=0){
+                    sendAJAX(URL,toJson(player.score, nombre, ID_JUEGO));
+                }
+            }
             showCongratulations();
             return;
         }
 //si pierde entonce muestre el mensaje de que perdio
         if (youLoose) {
+            if(envioDatos){
+                envioDatos = false;
+                if(nombre!="" && player.score!=0){
+                    sendAJAX(URL,toJson(player.score, nombre, ID_JUEGO));
+                }
+            }
             showGameOver();
             return;
         }
